@@ -18,12 +18,15 @@ public class CrudUserControllers {
         return "Page-home";
     }
     @PostMapping("/add")
-    public UserEntity addUser(UserEntity user){
+    public UserEntity addUser(@RequestBody UserEntity user){
         return userServiceImp.createUser(user);
     }
     @GetMapping("/getAll")
     public List<UserEntity> getAllUsers(){
         return userServiceImp.getAllUsers();
     }
-
+    @GetMapping("search")
+    public UserEntity searchUser(@RequestParam("name") String name, @RequestParam("email") String email){
+        return userServiceImp.findByNameAndEmail(name, email);
+    }
 }

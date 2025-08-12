@@ -10,4 +10,6 @@ import java.util.List;
 public interface UserService {
     public List<UserEntity> getAllUsers();
     public UserEntity createUser(UserEntity user);
+    // search theo tên
+    public UserEntity findByNameAndEmail(String name, String email);
 }

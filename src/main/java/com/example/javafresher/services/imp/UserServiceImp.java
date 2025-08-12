@@ -14,11 +14,16 @@ public class UserServiceImp implements UserService {
 
     @Override
     public List<UserEntity> getAllUsers() {
-        return userRepository.getAllUsers();
+        return userRepository.findAll();
     }
 
     @Override
     public UserEntity createUser(UserEntity user) {
-        return userRepository.createUser(user);
+        return userRepository.save(user);
+    }
+
+    @Override
+    public UserEntity findByNameAndEmail(String name, String email) {
+        return userRepository.findByNameAndEmail(name, email);
     }
 }

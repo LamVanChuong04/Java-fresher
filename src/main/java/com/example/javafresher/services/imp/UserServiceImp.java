@@ -8,7 +8,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+
 import java.util.List;
 
 @Service
@@ -24,11 +24,9 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    @Transactional
+    //@Transactional
     public UserEntity createUser(UserEntity user) {
         Test t = new Test();
-        Date date = new Date();
-        t.setCreate_date(date);
         t.setUsername("Lâm Văn Chương");
         testRepository.save(t);
         return userRepository.save(user);

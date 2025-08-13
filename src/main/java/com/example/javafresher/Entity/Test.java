@@ -1,18 +1,21 @@
 package com.example.javafresher.Entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
-import java.util.Date;
+
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table
-public class Test {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Test extends EntityBase{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private Date create_date;
+
     private String username;
     // getter
 

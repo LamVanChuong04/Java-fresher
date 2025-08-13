@@ -1,21 +1,26 @@
 package com.example.javafresher.Entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
+import org.springframework.context.annotation.Configuration;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "user001")
-public class UserEntity {
+@Table(name = "user")
+public class UserEntity extends EntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(columnDefinition = "varchar(255) comment 'user name'", nullable = false)
+    @Column(columnDefinition = "varchar(255) comment 'user name'", nullable = false, unique = true)
     private String name;
-    @Column(columnDefinition = "varchar(255) comment 'email'", nullable = false, unique = true)
+    @Column(columnDefinition = "varchar(255) comment 'email'", nullable = false)
     private String email;
-    @Column(columnDefinition = "varchar(6) comment 'password'", nullable = false)
+    @Column(nullable = false, columnDefinition = "varchar(20) comment 'password'")
     private String password;
+
     @Column(columnDefinition = "varchar(255) comment 'address'", nullable = false)
     private String address;
 

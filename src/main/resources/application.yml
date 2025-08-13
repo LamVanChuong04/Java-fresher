@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/java-fresher
+    url: jdbc:mysql://localhost:3306/java_fresher
     username: root
     password: 250104
     driver-class-name: com.mysql.jdbc.Driver

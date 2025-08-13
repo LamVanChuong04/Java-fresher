@@ -1,9 +1,14 @@
 package com.example.javafresher.controllers;
 
 
+import com.example.javafresher.Entity.Test;
 import com.example.javafresher.Entity.UserEntity;
+
+import com.example.javafresher.services.imp.TestServiceImpl;
 import com.example.javafresher.services.imp.UserServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +18,9 @@ import java.util.List;
 public class CrudUserControllers {
     @Autowired
     private UserServiceImp userServiceImp;
+
+    @Autowired
+    private TestServiceImpl testServiceImpl;
     @GetMapping("/home")
     public String getHomePage(){
         return "Page-home";
@@ -28,5 +36,11 @@ public class CrudUserControllers {
     @GetMapping("search")
     public UserEntity searchUser(@RequestParam("name") String name, @RequestParam("email") String email){
         return userServiceImp.findByNameAndEmail(name, email);
+    }
+
+    @GetMapping("/searchPage")
+    public ResponseEntity<?> search(@RequestParam(name = "pageNo") int pageNo, @RequestParam(name = "pageSize") int pageSize){
+        Page<Test> test = testServiceImpl.search(pageNo, pageSize);
+        return ResponseEntity.ok(test);
     }
 }

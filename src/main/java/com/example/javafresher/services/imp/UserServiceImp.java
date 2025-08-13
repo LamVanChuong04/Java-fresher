@@ -24,7 +24,7 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    //@Transactional
+    @Transactional
     public UserEntity createUser(UserEntity user) {
         Test t = new Test();
         t.setUsername("Lâm Văn Chương");

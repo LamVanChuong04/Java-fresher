@@ -16,4 +16,6 @@ public interface UserService {
     public UserEntity findByNameAndEmail(String name, String email);
     // page search
     public Page<UserEntity> searchByName(int pageNo, int pageSize, String name);
+    // page search sortby
+    public Page<UserEntity> searchSort(int pageNo, int pageSize);
 }

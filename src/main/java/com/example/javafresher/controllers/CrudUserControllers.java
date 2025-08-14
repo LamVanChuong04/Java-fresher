@@ -51,4 +51,10 @@ public class CrudUserControllers {
         Page<UserEntity> user = userServiceImp.searchByName(pageNo, pageSize, name);
         return ResponseEntity.ok(user);
     }
+
+    @GetMapping("/searchSort")
+    public ResponseEntity<?> search3(@RequestParam(name = "pageNo") int pageNo ,@RequestParam(name = "pageSize") int pageSize){
+        Page<UserEntity> user = userServiceImp.searchSort(pageNo, pageSize);
+        return ResponseEntity.ok(user);
+    }
 }

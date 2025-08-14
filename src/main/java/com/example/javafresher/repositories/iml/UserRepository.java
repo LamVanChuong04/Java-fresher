@@ -15,4 +15,6 @@ public interface UserRepository extends JpaRepository<UserEntity,Integer> {
     // save user
     @Query(value = "select * from user u where u.name = ?1", countQuery = "select count(*) from user u where u.name = ?1", nativeQuery = true)
     public Page<UserEntity> findAllByNameContaining(String name, Pageable  pageable);
+
+    public UserEntity findByName(String name);
 }

@@ -1,10 +1,7 @@
 package com.example.javafresher.Entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "feed")
@@ -12,6 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class FeedEntity extends EntityBase {
 
     @Id
@@ -24,7 +22,9 @@ public class FeedEntity extends EntityBase {
     @Column(columnDefinition = "varchar(255) comment 'description'")
     private String description;
 
+
     @ManyToOne(optional = false)
+    @ToString.Exclude
     @JoinColumn(name = "user_id", nullable = false) // foreign key to UserEntity.id
     private UserEntity user;
 }

@@ -1,7 +1,9 @@
 package com.example.javafresher;
 
+import com.example.javafresher.Entity.CCCDEntity;
 import com.example.javafresher.Entity.FeedEntity;
 import com.example.javafresher.Entity.UserEntity;
+import com.example.javafresher.repositories.iml.CCCDRepository;
 import com.example.javafresher.repositories.iml.FeedRepository;
 import com.example.javafresher.repositories.iml.UserRepository;
 import jakarta.transaction.Transactional;
@@ -19,6 +21,8 @@ public class UserTest {
     private FeedRepository feedRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private CCCDRepository ccdRepository;
 
     @Test
     @Transactional
@@ -59,5 +63,33 @@ public class UserTest {
         userRepository.save(user);
 //        feedRepository.save(feed);
 
+    }
+    @Test
+    @Transactional
+    void OneToManyTest3(){
+        //1. tạo user
+        UserEntity user = userRepository.findByName("Thiều Bảo Trâm");
+        System.out.println(user);
+        System.out.println(user.getFeeds());
+//        feedRepository.save(feed);
+
+    }
+    @Test
+    @Transactional
+    @Rollback(false)
+    void OneToOne(){
+        // 1. tạo user
+        UserEntity user = new UserEntity();
+        user.setAddress("Ho Chi Minh");
+        user.setPassword("123456");
+        user.setEmail("lamvanrom@gmail.com");
+        user.setName("Cr7");
+        //2. tạo cccd
+        CCCDEntity cccd = new CCCDEntity();
+        cccd.setSoCCCD(123456789);
+        cccd.setName("Lam Van Chuong");
+
+        user.setCccd(cccd);
+        userRepository.save(user);
     }
 }

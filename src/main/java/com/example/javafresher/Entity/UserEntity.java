@@ -12,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "users")
+@ToString
 public class UserEntity extends EntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,10 +27,14 @@ public class UserEntity extends EntityBase {
     @Column(columnDefinition = "varchar(255) comment 'address'", nullable = false)
     private String address;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    // 1 user->n feeds
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @ToString.Exclude
     private List<FeedEntity> feeds;
     // getter
 
     // setter
-
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "cccds_id")
+    private CCCDEntity cccd;
 }

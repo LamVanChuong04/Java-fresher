@@ -7,5 +7,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface TestService {
-    public Page<Test> search(int pageNo, int pageSize);
+    public Page<Test> search(int pageNo, int pageSize, boolean active);
 }

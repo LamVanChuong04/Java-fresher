@@ -6,6 +6,9 @@ import com.example.javafresher.repositories.iml.UserRepository;
 import com.example.javafresher.repositories.iml.TestRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
@@ -35,5 +38,11 @@ public class UserServiceImp implements UserService {
     @Override
     public UserEntity findByNameAndEmail(String name, String email) {
         return userRepository.findByNameAndEmail(name, email);
+    }
+
+    @Override
+    public Page<UserEntity> searchByName(int pageNo, int pageSize, String name) {
+        Pageable pageable = PageRequest.of(pageNo, pageSize);
+        return userRepository.findAllByNameContaining(name, pageable);
     }
 }

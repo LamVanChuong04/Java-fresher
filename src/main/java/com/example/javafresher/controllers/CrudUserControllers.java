@@ -41,8 +41,14 @@ public class CrudUserControllers {
     }
 
     @GetMapping("/searchPage")
-    public ResponseEntity<?> search(@RequestParam(name = "pageNo") int pageNo, @RequestParam(name = "pageSize") int pageSize){
-        Page<Test> test = testServiceImpl.search(pageNo, pageSize);
+    public ResponseEntity<?> search(@RequestParam(name = "pageNo") int pageNo ,@RequestParam(name = "pageSize") int pageSize, @RequestParam(name = "isActive") boolean active ){
+        Page<Test> test = testServiceImpl.search(pageNo, pageSize, active);
         return ResponseEntity.ok(test);
+    }
+
+    @GetMapping("/searchName")
+    public ResponseEntity<?> search2(@RequestParam(name = "pageNo") int pageNo ,@RequestParam(name = "pageSize") int pageSize, @RequestParam(name = "name") String name ){
+        Page<UserEntity> user = userServiceImp.searchByName(pageNo, pageSize, name);
+        return ResponseEntity.ok(user);
     }
 }

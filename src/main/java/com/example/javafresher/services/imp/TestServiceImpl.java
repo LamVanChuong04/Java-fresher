@@ -14,8 +14,8 @@ public class TestServiceImpl implements TestService {
     private TestRepository testRepository;
 
     @Override
-    public Page<Test> search(int pageNo, int pageSize) {
+    public Page<Test> search(int pageNo, int pageSize, boolean active) {
         Pageable pageable = PageRequest.of(pageNo-1, pageSize);
-        return testRepository.searchCustomize(pageable);
+        return testRepository.search2(active ,pageable);
     }
 }

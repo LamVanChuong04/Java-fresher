@@ -1,11 +1,13 @@
-package com.example.javafresher.services.imp;
+package com.example.javafresher.services.Impl;
 
-import com.example.javafresher.dto.DataMailDTO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
+
 import org.springframework.stereotype.Service;
+
+import com.example.javafresher.services.MailService;
 
 @Service
 public class MailServiceImpl implements MailService {

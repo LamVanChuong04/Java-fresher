@@ -2,8 +2,9 @@ package com.example.javafresher;
 
 import com.example.javafresher.Entity.OrderEntity;
 import com.example.javafresher.Entity.ProductEntity;
-import com.example.javafresher.repositories.iml.OrderRepository;
-import com.example.javafresher.repositories.iml.ProductRepository;
+import com.example.javafresher.repositories.OrderRepository;
+import com.example.javafresher.repositories.ProductRepository;
+
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

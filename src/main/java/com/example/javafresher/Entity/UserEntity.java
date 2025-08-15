@@ -2,7 +2,7 @@ package com.example.javafresher.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.context.annotation.Configuration;
+
 
 import java.util.List;
 

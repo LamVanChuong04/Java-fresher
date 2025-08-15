@@ -1,9 +1,11 @@
-package com.example.javafresher.services.imp;
+package com.example.javafresher.services.Impl;
 
 import com.example.javafresher.Entity.UserEntity;
 import com.example.javafresher.Entity.Test;
-import com.example.javafresher.repositories.iml.UserRepository;
-import com.example.javafresher.repositories.iml.TestRepository;
+import com.example.javafresher.repositories.TestRepository;
+import com.example.javafresher.repositories.UserRepository;
+import com.example.javafresher.services.UserService;
+
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

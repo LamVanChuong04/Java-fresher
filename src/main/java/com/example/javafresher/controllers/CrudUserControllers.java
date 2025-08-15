@@ -5,9 +5,10 @@ import com.example.javafresher.Entity.Test;
 import com.example.javafresher.Entity.UserEntity;
 
 import com.example.javafresher.dto.DataMailDTO;
-import com.example.javafresher.services.imp.MailServiceImpl;
-import com.example.javafresher.services.imp.TestServiceImpl;
-import com.example.javafresher.services.imp.UserServiceImp;
+import com.example.javafresher.services.Impl.MailServiceImpl;
+import com.example.javafresher.services.Impl.TestServiceImpl;
+import com.example.javafresher.services.Impl.UserServiceImp;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;

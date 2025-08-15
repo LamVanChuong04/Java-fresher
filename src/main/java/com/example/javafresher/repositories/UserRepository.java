@@ -1,14 +1,14 @@
-package com.example.javafresher.repositories.iml;
+package com.example.javafresher.repositories;
 
 import com.example.javafresher.Entity.UserEntity;
-import org.apache.catalina.User;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity,Integer> {
     public UserEntity findByNameAndEmail(String name, String email);

@@ -3,9 +3,10 @@ package com.example.javafresher;
 import com.example.javafresher.Entity.CCCDEntity;
 import com.example.javafresher.Entity.FeedEntity;
 import com.example.javafresher.Entity.UserEntity;
-import com.example.javafresher.repositories.iml.CCCDRepository;
-import com.example.javafresher.repositories.iml.FeedRepository;
-import com.example.javafresher.repositories.iml.UserRepository;
+import com.example.javafresher.repositories.CCCDRepository;
+import com.example.javafresher.repositories.FeedRepository;
+import com.example.javafresher.repositories.UserRepository;
+
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

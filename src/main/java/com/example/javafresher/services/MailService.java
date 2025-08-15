@@ -1,6 +1,6 @@
-package com.example.javafresher.services.imp;
+package com.example.javafresher.services;
 
-import com.example.javafresher.dto.DataMailDTO;
+
 import org.springframework.stereotype.Service;
 
 @Service

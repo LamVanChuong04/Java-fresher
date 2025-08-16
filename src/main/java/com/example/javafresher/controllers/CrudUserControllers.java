@@ -9,9 +9,11 @@ import com.example.javafresher.services.Impl.MailServiceImpl;
 import com.example.javafresher.services.Impl.TestServiceImpl;
 import com.example.javafresher.services.Impl.UserServiceImp;
 
+import jakarta.annotation.security.RolesAllowed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,14 +33,19 @@ public class CrudUserControllers {
     public String getHomePage(){
         return "Page-home";
     }
+
     @PostMapping("/add")
     public UserEntity addUser(@RequestBody UserEntity user){
         return userServiceImp.createUser(user);
     }
+
+
+    @RolesAllowed("ADMIN")
     @GetMapping("/getAll")
     public List<UserEntity> getAllUsers(){
         return userServiceImp.getAllUsers();
     }
+
     @GetMapping("search")
     public UserEntity searchUser(@RequestParam("name") String name, @RequestParam("email") String email){
         return userServiceImp.findByNameAndEmail(name, email);

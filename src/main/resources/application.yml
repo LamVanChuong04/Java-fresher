@@ -20,3 +20,8 @@ mailServer:
     password: cxuz djds eadg ffqe
     protocol: smtp
     isSSL: false
+
+---
+logging:
+  level:
+    org.springframework.security: debug

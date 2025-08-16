@@ -30,7 +30,7 @@ public abstract class EntityBase implements Serializable {
     private Date lastModifiedDate;
 
     @Column(name = "is_deleted")
-    private boolean isDelete = false;
+    private Boolean isDelete = false;
     @Column(name = "is_active")
-    private boolean isActive = true;
+    private Boolean isActive = true;
 }

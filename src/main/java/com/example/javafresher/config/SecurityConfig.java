@@ -1,5 +1,6 @@
 package com.example.javafresher.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -15,10 +16,14 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 
+@Slf4j
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(jsr250Enabled = true)
 public class SecurityConfig {
+
+
+
 
     @Bean
     public UserDetailsService userDetailsService() {
@@ -48,9 +53,11 @@ public class SecurityConfig {
                         .requestMatchers("/api/auth/**").authenticated()
                         //.requestMatchers("/api/v1/getAll")
                         .anyRequest().authenticated()
-                );
-//                .formLogin(Customizer.withDefaults()); // <-- form login mặc định
+                )
+                .formLogin(Customizer.withDefaults()); // <-- form login mặc định
+//
         return http.build();
     }
+//
 
 }

@@ -1,7 +1,10 @@
 package com.example.javafresher.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.io.Serializable;
 
 @Entity
 @Table(name = "feed")
@@ -10,7 +13,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class FeedEntity extends EntityBase {
+public class FeedEntity extends EntityBase  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +28,7 @@ public class FeedEntity extends EntityBase {
 
     @ManyToOne(optional = false)
     @ToString.Exclude
+    @JsonIgnore
     @JoinColumn(name = "user_id", nullable = false) // foreign key to UserEntity.id
     private UserEntity user;
 }

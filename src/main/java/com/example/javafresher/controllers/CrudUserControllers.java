@@ -57,11 +57,11 @@ public class CrudUserControllers {
         return ResponseEntity.ok(test);
     }
 
-    @GetMapping("/searchName")
-    public ResponseEntity<?> search2(@RequestParam(name = "pageNo") int pageNo ,@RequestParam(name = "pageSize") int pageSize, @RequestParam(name = "name") String name ){
-        Page<UserEntity> user = userServiceImp.searchByName(pageNo, pageSize, name);
-        return ResponseEntity.ok(user);
-    }
+//    @GetMapping("/searchName")
+//    public ResponseEntity<?> search2(@RequestParam(name = "pageNo") int pageNo ,@RequestParam(name = "pageSize") int pageSize, @RequestParam(name = "name") String name ){
+//        Page<UserEntity> user = userServiceImp.searchByName(pageNo, pageSize, name);
+//        return ResponseEntity.ok(user);
+//    }
 
     @GetMapping("/searchSort")
     public ResponseEntity<?> search3(@RequestParam(name = "pageNo") int pageNo ,@RequestParam(name = "pageSize") int pageSize){
@@ -76,5 +76,9 @@ public class CrudUserControllers {
         String content = mailDTO.getContent();
         mailServiceImpl.sendTextMail(to, subject, content);
         return ResponseEntity.ok("Send Mail");
+    }
+    @GetMapping("/findUser")
+    public UserEntity testRedis(@RequestParam String name){
+        return userServiceImp.findUser(name);
     }
 }

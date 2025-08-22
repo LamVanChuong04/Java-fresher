@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 
+import java.io.Serializable;
 import java.util.List;
 
 @Getter
@@ -13,7 +14,7 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 @ToString
-public class UserEntity extends EntityBase {
+public class UserEntity extends EntityBase  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // user_id

@@ -47,17 +47,17 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.formLogin((formLogin) -> formLogin.loginProcessingUrl("/login"));
         http
                 .authorizeHttpRequests(req -> req
-                        .requestMatchers("/api/auth/**").authenticated()
-                        //.requestMatchers("/api/v1/getAll")
-                        .anyRequest().authenticated()
+                        .requestMatchers("/api/auth/**").permitAll() // cho phép login, register
+                        .requestMatchers("/api/v1/voucher/get-all").permitAll() // cho phép public API
+                        .anyRequest().authenticated() // còn lại phải login
                 )
-                .formLogin(Customizer.withDefaults()); // <-- form login mặc định
-//
+                .formLogin(Customizer.withDefaults()); // dùng form login mặc định
+
         return http.build();
     }
+
 //
 
 }

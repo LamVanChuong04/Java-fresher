@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface UserService {
@@ -15,7 +16,9 @@ public interface UserService {
     // search theo tên
     public UserEntity findByNameAndEmail(String name, String email);
     // page search
-    public Page<UserEntity> searchByName(int pageNo, int pageSize, String name);
+    //public Page<UserEntity> searchByName(int pageNo, int pageSize, String name);
     // page search sortby
     public Page<UserEntity> searchSort(int pageNo, int pageSize);
+
+    public UserEntity findUser(String name);
 }

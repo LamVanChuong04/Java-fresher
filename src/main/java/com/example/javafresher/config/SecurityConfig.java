@@ -48,9 +48,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(req -> req
                         .requestMatchers("/api/auth/**").permitAll() // cho phép login, register
-                        .requestMatchers("/api/v1/voucher/get-all").permitAll() // cho phép public API
+                        .requestMatchers("/api/v1/voucher/**").permitAll() // cho phép public API
                         .anyRequest().authenticated() // còn lại phải login
                 )
                 .formLogin(Customizer.withDefaults()); // dùng form login mặc định

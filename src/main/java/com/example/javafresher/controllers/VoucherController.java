@@ -3,10 +3,9 @@ package com.example.javafresher.controllers;
 import com.example.javafresher.Entity.VoucherEntity;
 import com.example.javafresher.services.Impl.VoucherServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,5 +17,17 @@ public class VoucherController {
     @GetMapping("/get-all")
     public List<VoucherEntity> getVouchers() {
         return voucherServiceImpl.getAllVouchers();
+    }
+
+    // them voucher
+
+    @PostMapping("/add")
+    public ResponseEntity<?> addVoucher(@RequestBody VoucherEntity voucher) {
+        VoucherEntity voucherEntity = new VoucherEntity();
+        voucherEntity.setVoucherName(voucher.getVoucherName());
+        voucherEntity.setVoucherDescription(voucher.getVoucherDescription());
+        voucherEntity.setVoucherPrice(voucher.getVoucherPrice());
+        voucherServiceImpl.saveVoucher(voucherEntity);
+        return ResponseEntity.ok("success");
     }
 }
